@@ -126,7 +126,7 @@ jobs:
     - name: Create archive
       if: ${{ github.event_name != 'release' && success() }}
       run: |
-        ls -lh ${IMAGES_DIR}
+        cd /opt/rt-n56u
         GIT_VERSION=`git rev-parse --short=7 HEAD 2>/dev/null` && [ -n "$GIT_VERSION" ] && \
         image_name=Padavan-${KERNEL}-${TNAME}-${GIT_VERSION}
         cd ${IMAGES_DIR}; md5sum *.trx |tee md5sum.txt; 7z a -mx=9 ${IMAGES_DIR}.7z ./*
